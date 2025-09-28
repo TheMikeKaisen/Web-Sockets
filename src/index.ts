@@ -14,4 +14,10 @@ wss.on("connection", function(socket){
     setInterval(() => {
         socket.send(Math.random());
     }, 1000);
+
+    // to receive a message sent by the user
+    // NOTE: we are using socket here("socket" as in the name received as a parameter while wss.on("connection", function(socket)))
+    socket.on("message", function(msg){
+        console.log(msg.toString());
+    })
 })
